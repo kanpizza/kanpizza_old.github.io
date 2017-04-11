@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" media="screen" href="css_hm3.css">
+</head>
+
+<body>
+<h1>Registeration Form </h1>
+<div class="profile" id ="profile">
+<table id = "information" >
+
+<form> 
+<td align="right"> Firstname : </td>
+<td><input type ="text" id="Firstname"> <br> <br> </td> 
+<tr>
+<td align="right">Lastname : </td>
+<td><input type ="text" id="Lastname" > <br> <br></td>
+</tr>
+<tr>
+<td align="right">Citizenship number:</th>  
+<td><input type ="text" id="Citizenship number"  maxlength="13" > <br> <br></td>
+</tr>
+  
+
+
+<tr>
+<td align="right">Address :  <br> <br></td> 
+</tr>
+<tr>
+<td align="right">House number</td> 
+<td><input type ="text" id="House number" > <br> <br> </td>
+</tr>
+<tr>
+<td align="right">Street </td>
+<td><input type ="text" id="Street" > <br> <br></td>
+</tr>
+<tr>
+<td align="right">City</td> 
+<td><input type ="text" id="City" > <br> <br></td>
+</tr>
+<tr>
+<td align="right">Province</td>
+ <td><input type ="text" id="Province"> <br> <br></td>
+</tr>
+<tr>
+<td align="right">Zipcode</td>
+ <td><input type ="text" id="Zipcode" > <br> <br></td>
+</tr>
+
+
+
+<tr>
+<td align="right">Phone number :</td>
+<td> <input type ="text" id="Phone number" value="+662-"  maxlength="12" > </td>
+<br> <br>
+</tr>
+<tr>
+<td align="right">Cell phone number :</td>
+<td> <input type ="text" id="Cell phone number" value="+66"  maxlength="14" ></td>
+<br> <br>
+</tr>
+
+<tr>
+<td align="right">Birthday :</td>
+<td> <input type ="text" id="Birthday"  maxlength="10"> </td><br> <br>
+</tr>
+<tr>
+<td align="right">Birth Day of Week :</td>
+<td> <input type ="text" id="Birth Day of Week" ></td>
+<br> <br>
+</tr>
+
+<tr>
+<td align="right">Zodiac Sign :</td>
+<td> <input type ="text" id="Zodiac Sign" > </td>
+<br> <br>
+</tr>
+<tr>
+<td align="right">Zodiac Year : </td>
+<td><input type ="text" id="Zodiac Year"> </td>
+<br> <br>
+</tr>
+
+</form>
+</table>
+</div>
+
+
+<section class="button" id = "button">
+<p><button onclick="save_fn()">Save </button>
+<button onclick="clear_fn()">Cancel </button></p>
+<button onclick="submit()">Submit </button>
+</section>
+
+
+<div class = "table"  id="table" style="display:none;">
+<table style="display:none;" id="sumtable"  border="3" bordercolor="#CCCCCC" cellspacing="5" cellpadding="10" width="70%">
+<col align="center"></col>    
+   <col align="left"></col>    
+   <col align="left"></col>    
+   <col align="right"></col> 
+  <tr>
+
+  </tr>
+</table>
+</div>
+</div>
+
+
+<script>
+var text = ["Firstname","Lastname","Citizenship number","House number","Street","City","Province","Zipcode","Phone number","Cell phone number","Birthday","Birth Day of Week","Zodiac Sign","Zodiac Year"];
+
+
+var showtable = false;
+setwin_fn();
+function save_fn(){
+	
+	for (var i=0;i<=text.length-1;i++){
+
+		}
+
+	var allcookies = document.cookie;
+
+
+}
+
+function setfield_fn(){
+	var array= document.cookie.split(";");
+	for (var j=0;j<=array.length-1;j++){
+		var sparray = array[j].split("=");
+
+		document.getElementById(text[j]).value=sparray[1];
+
+		console.log(sparray);
+		
+	}
+	showtable = true;
+	console.log(showtable);
+}	
+	var value = document.getElementById(text[i]).value;
+	document.cookie = text[i]+"="+value;
+
+
+function clear_fn(){
+	
+	for (var c=0;c<=text.length-1;c++){
+		
+		
+		document.cookie = text[c]+"="+"";
+		/*document.getElementById(text[c]).value="";*/
+		if(c==8){
+			document.getElementById(text[c]).value="+662-"
+		}
+		else if (c==9){
+			document.getElementById(text[c]).value="+66"
+		}
+		else {
+			document.getElementById(text[c]).value=""
+		}
+		}
+		save_fn();
+		console.log(document.cookie);
+
+}
+
+function submit(){
+	
+	showtable = true;
+	check_fn();
+	console.log(showtable);
+}
+function check_fn(){
+	var letters = /^[A-Za-z]+$/;
+	var number = /^[0-9]+$/;
+	var numt=/^[0-9/]+$/;
+	var all=/^[A-Za-z0-9]+$/;
+	var msg="";
+	var check=true;
+	
+	for(var y = 0 ; y < text.length ; y++){
+		
+		if (y==0 ){
+			if(!document.getElementById(text[y]).value.match(letters) ){
+				msg=msg+"please insert letters "+text[y] + "\n";
+				check=false;
+			}
+		}
+		if (y==1){
+			if(!document.getElementById(text[y]).value.match(letters) ){
+				msg=msg+"please insert letters "+text[y] + "\n";
+				check=false;
+			}
+		}
+		if (y==5){
+			if(!document.getElementById(text[y]).value.match(letters) ){
+				msg=msg+"please insert letters "+text[y] + "\n";
+				check=false;
+			}
+		}
+		if (y==6){
+			if(!document.getElementById(text[y]).value.match(letters) ){
+				msg=msg+"please insert letters "+text[y] + "\n";
+				check=false;
+			}
+		}
+		if( y==7 ){
+		if (!document.getElementById(text[y]).value.match(number) ){
+				msg=msg+"please insert digit "+text[y] + "\n";
+				check=false;
+			}
+		}
+		if((y==2 && document.getElementById(text[y]).value.length != "13") || (y==2 && !document.getElementById(text[y]).value.match(number))){
+				msg=msg+"please insert digit"+text[y] + "\n";
+				check=false;
+			
+		}
+		if (y==3 && !document.getElementById(text[y]).value.match(numt)){
+				msg=msg+"please insert digit or / "+text[y] + " || ";
+				check=false;
+			
+		}
+		if (y==4 && !document.getElementById(text[y]).value.match(all)){
+				msg=msg+"please insert letters or digit "+text[y] + "\n";
+				check=false;
+		}
+		 if (y==8){
+		var ch;
+		var vl = document.getElementById(text[y]).value;
+		if(document.getElementById(text[y]).value == "" || document.getElementById(text[y]).value.length != "12"){
+			ch=false;
+		}
+		else {
+			ch=true;
+	
+		for	(n in vl){
+			console.log(vl[n]);
+
+			if(n==0){
+				if(vl[n]!="+"){
+				ch=false;
+				}
+			}
+			else if(n==1 || n==2){
+				if(vl[n]!="6"){
+					ch=false;
+				}
+			}
+			else if(n==3 && vl[n]!="2"){
+				ch=false;
+			}
+			else if(n==4 || n==8  ){
+				if(vl[n]!="-"){
+					ch=false;
+				}
+			}
+			
+			else if (n==5 || n==6 || n==7 || n==9 || n==10 || n==11){
+				if(!vl[n].match(number)){
+					ch=false;
+					
+				}
+			}
+		}
+		}	
+			if(ch==false){
+			msg=msg+"please insert cell phone \"+662-xxx-xxx\" : "+text[y] + "\n ";
+			check=false;
+		}
+
+		}
+		
+	if (y==9){
+		var ch;
+		var vl = document.getElementById(text[y]).value;
+		if(document.getElementById(text[y]).value == "" || document.getElementById(text[y]).value.length!= "14"){
+			ch=false;
+		}
+		else {
+			ch=true;
+		for	(n in vl){
+			console.log(vl[n]);
+
+			if(n==0){
+				if(vl[n]!="+"){
+				ch=false;
+				}
+			}
+			else if(n==1 || n==2){
+				if(vl[n]!="6"){
+					ch=false;
+				}
+			}
+			else if(n==5 || n==9  ){
+				if(vl[n]!="-"){
+					ch=false;
+				}
+			}
+			
+			else if (n==3 || n==4 || n==6 || n==7 || n==8 || n==10 || n==11 || n==12){
+				if(!vl[n].match(number)){
+					ch=false;
+				}
+			}
+		}	
+		}
+			if(ch==false){
+			msg=msg+"please insert phone no. \"+66xx-xxx-xxxx\" : "+text[y] + "\n ";
+			check=false;
+		
+
+		}
+	}
+
+if(y==10){
+		var array= document.getElementById(text[y]).value;
+		var ck;
+		if(array == "" || array.length!= "10"){
+			ck=false;
+		}
+		else {
+			ck=true;
+		for	(n in array){
+			if(n==0 || n==1 || n==3 || n==4 || n==6 || n==7 || n==8 || n==9){
+				if(!array[n].match(number)){
+					ck=false;
+				}
+			}
+			else if (n==2 || n==5){
+				if(array[n]!="/"){
+					ck=false;
+				}
+			}
+			
+		}
+	}
+	
+			if(ck==false){
+			msg=msg+"please insert birthday \ DD/MM/YYYY \" : "+text[y] + "\n ";
+			check=false;
+		}
+	}
+
+if(y==11){
+	
+	var day = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+	var ck = false;
+	
+	var va =document.getElementById(text[y]).value;
+	for(var i=0;i<=day.length-1;i++ ){
+		console.log(day[i]);
+		if(va==day[i]){
+		ck= true;	
+		break;
+		}
+	}
+	if(ck == false){
+		msg=msg+"please insert [Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday] "+text[y] + "\n ";
+		check=false;
+	}
+	
+}
+if (y==12){
+	var sign = ["ราศีมังกร","ราศีกุมภ์","ราศีมีน","ราศีเมษ","ราศีพฤษภ","ราศีเมถุน","ราศีกรกฏ","ราศีสิงห์","ราศีกันย์","ราศีตุลย์","ราศีพิจิก","ราศีธนู"];
+	var che = false;
+	var get = document.getElementById(text[y]).value;
+		for(var b=0;b<=sign.length-1;b++ ){
+		if(get==sign[b]){
+		che= true;	
+		break;
+		}
+	}
+	if(che == false){
+		msg=msg+"please insert zodiac sign [ราศีมังกร,ราศีกุมภ์,ราศีมีน,ราศีเมษ,ราศีพฤษภ,ราศีเมถุน,ราศีกรกฏ,ราศีสิงห์,ราศีกันย์,ราศีตุลย์,ราศีพิจิก,ราศีธนู] "+text[y] + "\n ";
+		check=false;
+	}
+}
+if (y==13){
+	var year = ["ปีชวด","ปีฉลู","ปีขาล","ปีเถาะ","ปีมะโรง","ปีมะเส็ง","ปีมะเมีย","ปีมะแม","ปีวอก","ปีระกา","ปีจอ","ปีกุน"];
+	var cc = false;
+	var getvalue = document.getElementById(text[y]).value;
+		for(var b=0;b<=year.length-1;b++ ){
+		if(getvalue==year[b]){
+		cc= true;	
+		break;
+		}
+	}
+	if(cc == false){
+		msg=msg+"please insert zodiac year [ปีชวด,ปีฉลู,ปีขาล,ปีเถาะ,ปีมะโรง,ปีมะเส็ง,ปีมะเมีย,ปีมะแม,ปีวอก,ปีระกา,ปีจอ,ปีกุน] "+text[y] + "\n ";
+		check=false;
+	}
+}
+
+
+		
+	}		
+	   if(check==true){
+			save_fn();
+			var example = document.cookie.split(";");
+			alert(example[0]+example[1]);
+			setwin_fn();
+	   }
+		else if(check==false){
+			alert(msg);
+			
+		}
+	
+	
+}
+function settable_fn(){
+
+	document.getElementById("profile").style.display = 'none';
+	document.getElementById("button").style.display = 'none';
+	document.getElementById("sumtable").style.display = 'block';
+	document.getElementById("table").style.display = 'block';
+	var table = document.getElementById("sumtable");
+
+ 
+	var array= document.cookie.split(";");
+	console.log(array);
+	for (var h=array.length-1;h!=-1;h--){
+		var sparray = array[h].split("=");	
+		var row = table.insertRow(0);  
+		var cell1 = row.insertCell(0);
+		var cell2 = row.insertCell(1);
+
+		 cell1.innerHTML = sparray[0];
+		 cell2.innerHTML =  sparray[1];
+		 console.log(sparray);
+		/*document.write(sparray[0] + sparray[1] + "<br/>"); */
+	}
+
+
+		showtable = false;
+}
+function setwin_fn(){
+if(showtable == false){
+	window.onload=setfield_fn();
+}
+else if (showtable == true){
+	window.onload=settable_fn();
+}
+}
+</script>
+
+</body>
+</html>
